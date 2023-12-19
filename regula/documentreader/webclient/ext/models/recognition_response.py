@@ -19,8 +19,7 @@ class RecognitionResponse:
 
     @property
     def text(self) -> Optional[Text]:
-        result = self.result_by_type(Result.TEXT)
-        if result:
+        if result := self.result_by_type(Result.TEXT):
             return result.text
         return None
 
@@ -30,21 +29,18 @@ class RecognitionResponse:
 
     @property
     def status(self) -> Optional[Status]:
-        result = self.result_by_type(Result.STATUS)
-        if result:
+        if result := self.result_by_type(Result.STATUS):
             return result.status
         return None
 
     @property
     def images(self) -> Optional[Images]:
-        result = self.result_by_type(Result.IMAGES)
-        if result:
+        if result := self.result_by_type(Result.IMAGES):
             return result.images
         return None
 
     def authenticity(self, page_idx=0) -> Optional[AuthenticityCheckList]:
-        result = self.pageable_result_by_type(Result.AUTHENTICITY, page_idx)
-        if result:
+        if result := self.pageable_result_by_type(Result.AUTHENTICITY, page_idx):
             return result.authenticity_check_list
         return None
 

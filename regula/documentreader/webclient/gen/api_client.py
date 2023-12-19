@@ -645,8 +645,7 @@ class ApiClient(ModelSerDe, object):
             return
 
         for auth in auth_settings:
-            auth_setting = self.configuration.auth_settings().get(auth)
-            if auth_setting:
+            if auth_setting := self.configuration.auth_settings().get(auth):
                 self._apply_auth_params(headers, querys, auth_setting)
 
     def _apply_auth_params(self, headers, querys, auth_setting):
